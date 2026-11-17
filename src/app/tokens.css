@@ -1,0 +1,56 @@
+/**
+ * CUSTOMIZABLE: centralized design tokens.
+ * Brand colors, flavor accents, type, radii, elevation and motion all live here
+ * and are exposed to Tailwind through @theme. Nothing else hardcodes a color.
+ */
+@theme {
+  /* Brand */
+  --color-espresso: #2b211b;
+  --color-cream: #fbf3e6;
+  --color-burnt: #a0561c;
+  --color-taupe: #75655a;
+  --color-line: #d9c9b6;
+
+  /* Derived neutrals */
+  --color-surface: #fffaf2; /* raised surface on cream */
+  --color-cream-deep: #f3e7d3; /* recessed/inset surface */
+  --color-taupe-strong: #5e5047; /* stronger secondary text */
+  --color-field: #8c7d70; /* form-control edge, >= 3:1 on cream */
+  --color-burnt-ink: #86460f; /* burnt text on tinted fills */
+
+  /* Semantic */
+  --color-success: #4c6a35;
+  --color-success-tint: #e8eed9;
+  --color-warning: #8a5a00;
+  --color-warning-tint: #f8e8c5;
+  --color-danger: #9b2f23;
+  --color-danger-tint: #f6dcd6;
+  --color-info-tint: #efe3d0;
+
+  /* Flavor accents: restrained, used for cans, chips and rules only */
+  --color-chai: #b4673a;
+  --color-chai-ink: #7a4220;
+  --color-chai-tint: #f1dcc9;
+  --color-oolong: #4f7a78;
+  --color-oolong-ink: #2f5553;
+  --color-oolong-tint: #d9e5e1;
+  --color-matcha: #7a8b4f;
+  --color-matcha-ink: #4c5a2c;
+  --color-matcha-tint: #e2e8d0;
+
+  /* Type */
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Shape & elevation (restrained: borders first, tiny shadows only) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-lift: 0 1px 0 rgb(43 33 27 / 0.04), 0 6px 18px -10px rgb(43 33 27 / 0.28);
+
+  /* Motion */
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration-base: 260ms;
+}
