@@ -9,6 +9,17 @@ import { DEMO_COOKIE, DEMO_SCENARIO_COOKIE, demoCookieOptions, demoStore } from 
  * `?scenario=<id>` resets the visitor's own demo to that fixture.
  */
 export async function GET(request: NextRequest) {
+  try {
+    return await start(request);
+  } catch (e) {
+    // Never return an empty body (browsers save it as a 0-byte download). Surface a readable error instead.
+    const reason = e instanceof Error ? e.message.slice(0, 120) : "unknown";
+    console.error("demo start failed:", reason);
+    return NextResponse.redirect(new URL(`/?demo_error=${encodeURIComponent(reason)}`, request.nextUrl.origin));
+  }
+}
+
+async function start(request: NextRequest) {
   const jar = await cookies();
   const store = await demoStore();
   const requested = request.nextUrl.searchParams.get("scenario");

@@ -10,7 +10,7 @@ import { getCtx } from "@/lib/session";
 
 const accent = { chai: "text-chai-ink", oolong: "text-oolong-ink", matcha: "text-matcha-ink" } as const;
 
-export default async function Landing({ searchParams }: { searchParams: Promise<{ deleted?: string }> }) {
+export default async function Landing({ searchParams }: { searchParams: Promise<{ deleted?: string; demo_error?: string }> }) {
   const sp = await searchParams;
   const ctx = await getCtx();
   return (
@@ -38,6 +38,13 @@ export default async function Landing({ searchParams }: { searchParams: Promise<
       </header>
 
       <main id="main">
+        {sp.demo_error ? (
+          <div className="mx-auto max-w-6xl px-5 md:px-10">
+            <Callout tone="error" title="The demo couldn’t start">
+              The server failed to create your demo session ({sp.demo_error.slice(0, 120)}). If this is your own deployment, check the Supabase keys and that the migrations ran, or set DEMO_STORE=memory.
+            </Callout>
+          </div>
+        ) : null}
         {sp.deleted ? (
           <div className="mx-auto max-w-6xl px-5 md:px-10">
             <Callout tone="success" title="Your account and data were deleted.">Imported calendar data, preferences, logs and credentials are gone.</Callout>
